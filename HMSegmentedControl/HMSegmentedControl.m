@@ -139,6 +139,7 @@
     self.selectionIndicatorHeight = 5.0f;
     self.selectionIndicatorEdgeInsets = UIEdgeInsetsMake(0.0f, 0.0f, 0.0f, 0.0f);
     self.selectionStyle = HMSegmentedControlSelectionStyleTextWidthStripe;
+    self.selectionStripeStyle = HMSegmentedControlSelectionStripeStyleRound;
     self.selectionIndicatorLocation = HMSegmentedControlSelectionIndicatorLocationUp;
     self.segmentWidthStyle = HMSegmentedControlSegmentWidthStyleFixed;
     self.userDraggable = YES;
@@ -462,6 +463,10 @@
         } else {
             if (!self.selectionIndicatorStripLayer.superlayer) {
                 self.selectionIndicatorStripLayer.frame = [self frameForSelectionIndicator];
+                if ((self.selectionStyle == HMSegmentedControlSelectionStyleTextWidthStripe || self.selectionStyle == HMSegmentedControlSelectionStyleFullWidthStripe) && self.selectionStripeStyle == HMSegmentedControlSelectionStripeStyleRound) {
+                    self.selectionIndicatorStripLayer.cornerRadius = self.selectionIndicatorStripLayer.frame.size.height/2;
+                    [self.selectionIndicatorStripLayer masksToBounds];
+                }
                 [self.scrollView.layer addSublayer:self.selectionIndicatorStripLayer];
                 
                 if (self.selectionStyle == HMSegmentedControlSelectionStyleBox && !self.selectionIndicatorBoxLayer.superlayer) {

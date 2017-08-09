@@ -20,6 +20,11 @@ typedef NS_ENUM(NSInteger, HMSegmentedControlSelectionStyle) {
     HMSegmentedControlSelectionStyleArrow // An arrow in the middle of the segment pointing up or down depending on `HMSegmentedControlSelectionIndicatorLocation`
 };
 
+typedef NS_ENUM(NSInteger, HMSegmentedControlSelectionStripeStyle) {
+    HMSegmentedControlSelectionStripeStyleRound,
+    HMSegmentedControlSelectionStripeStyleRect
+};
+
 typedef NS_ENUM(NSInteger, HMSegmentedControlSelectionIndicatorLocation) {
     HMSegmentedControlSelectionIndicatorLocationUp,
     HMSegmentedControlSelectionIndicatorLocationDown,
@@ -136,6 +141,11 @@ typedef NS_ENUM(NSInteger, HMSegmentedControlType) {
  Default is `HMSegmentedControlSelectionStyleTextWidthStripe`
  */
 @property (nonatomic, assign) HMSegmentedControlSelectionStyle selectionStyle;
+
+/**
+ Specifies the style of the stripeStyle when selectionStyle is 'HMSegmentedControlSelectionStyleTextWidthStripe' or 'HMSegmentedControlSelectionStyleFullWidthStripe'
+ */
+@property (nonatomic, assign) HMSegmentedControlSelectionStripeStyle selectionStripeStyle;
 
 /**
  Specifies the style of the segment's width.
